@@ -77,6 +77,7 @@ flowchart TB
 | [`agents/`](agents) | Всеки независимо разработван агент; вижте `agents/_example-agent` за скелет |
 | [`agents/ri-001-reference-watch`](agents/ri-001-reference-watch) | **RI-001** — детерминистична референтна имплементация на Watch агент; постоянен regression test за целия pipeline (ADR-0001…0011) |
 | [`agents/ri-002-multi-sensor`](agents/ri-002-multi-sensor) | **RI-002** — три независими Sensor-а/агента, доказващи че Correlation Engine слива много Evidence в точно едно Event без Kernel промяна |
+| [`agents/oil-regime-watch`](agents/oil-regime-watch) | **PA-001** — първият производствен Watch агент: EIA inventory, OPEC+ announcements, WTI/Brent цени → измерими Predictions → автоматична Outcome резолюция → Domain Trust |
 
 ## Статус
 
@@ -92,9 +93,16 @@ RI-001 и RI-002 (`agents/ri-001-reference-watch`, `agents/ri-002-multi-sensor`)
 Observation → Evidence → Event → Hypothesis → Prediction → Outcome →
 Trust (RI-001), така и multi-sensor корелация на много Evidence в едно
 Event със запазен provenance (RI-002) — и двете без нито една промяна в
-`packages/`. Реален runtime и production агенти (започвайки от Oil Regime
-Watch) се разработват отделно, върху тази вече доказана основа.
+`packages/`.
+
+`agents/oil-regime-watch` (PA-001) е първият **производствен** Watch агент,
+построен върху същите доказани контракти и същите in-memory fixtures за
+тестване (все още няма production runtime за Event Bus/Trust Engine/Sensor
+Registry в репото). Real-time EIA свързаност е имплементирана, но
+непроверена на живо в тази среда (мрежовата политика блокира изходящ
+достъп до api.eia.gov) — виж `agents/oil-regime-watch/README.md`,
+"Known limitations" и `docs/OPERATIONS.md`.
 
 ```sh
-npm run test   # изгражда и пуска RI-001's и RI-002's regression suites
+npm run test   # изгражда и пуска RI-001, RI-002 и PA-001's regression suites
 ```

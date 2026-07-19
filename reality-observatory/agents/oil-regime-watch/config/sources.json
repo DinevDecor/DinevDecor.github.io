@@ -1,0 +1,39 @@
+{
+  "domain": "energy.oil",
+  "sources": {
+    "eiaInventory": {
+      "enabled": true,
+      "route": "petroleum/stoc/wstk",
+      "facets": { "product": "EPC0", "duoarea": "NUS" },
+      "frequency": "weekly",
+      "unit": "thousand-barrels"
+    },
+    "eiaWtiPrice": {
+      "enabled": true,
+      "route": "petroleum/pri/spt",
+      "facets": { "series": "RWTC" },
+      "frequency": "daily",
+      "unit": "usd-per-barrel"
+    },
+    "eiaBrentPrice": {
+      "enabled": true,
+      "route": "petroleum/pri/spt",
+      "facets": { "series": "RBRTE" },
+      "frequency": "daily",
+      "unit": "usd-per-barrel"
+    },
+    "opecAnnouncements": {
+      "enabled": true,
+      "feedPath": "./opec-announcements.json"
+    }
+  },
+  "thresholds": {
+    "inventorySurpriseThousandBarrels": 3000,
+    "inventoryTrailingWeeks": 4,
+    "priceMoveEvidenceThresholdPercent": 1.5,
+    "priceMoveConfirmationThresholdPercent": 1.5,
+    "predictionHorizonHours": 120
+  },
+  "apiKeyEnvVar": "EIA_API_KEY",
+  "apiBaseUrl": "https://api.eia.gov/v2"
+}

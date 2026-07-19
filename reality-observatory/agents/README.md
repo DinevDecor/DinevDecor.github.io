@@ -32,3 +32,13 @@ Sensor Registry до Domain Trust Update — и `agents/ri-002-multi-sensor/`
 (ADR-0001…0011), не производствени агенти; кодовата база в тях (in-memory
 fixtures за Event Bus/Sensor Registry/Trust Engine) съществува единствено
 за да направи контрактите изпълними в тестове.
+
+`agents/oil-regime-watch/` (**PA-001**) е първият производствен Watch
+агент — наблюдава EIA седмичния petroleum status report, OPEC+
+production announcements, и WTI/Brent спот цени; произвежда реални,
+измерими Predictions с explicit invalidation условия и Outcome резолюция.
+За разлика от RI-001/RI-002, сценарият тук не е фиксиран, но тестовият му
+suite остава напълно детерминиран (fixture adapters вместо реални HTTP
+извиквания, тъй като мрежовата политика на текущата среда блокира изходящ
+достъп до api.eia.gov). Виж `agents/oil-regime-watch/README.md` и
+`docs/OPERATIONS.md` за архитектура, конфигурация и operational runbook.

@@ -10,7 +10,7 @@
   "scripts": {
     "build": "tsc --build packages/ontology packages/event-bus packages/trust-engine packages/sensor-registry packages/agent-sdk packages/correlation-engine",
     "typecheck": "tsc --build packages/ontology packages/event-bus packages/trust-engine packages/sensor-registry packages/agent-sdk packages/correlation-engine --force",
-    "test": "npm run test --workspace=@reality-observatory/ri-001-reference-watch && npm run test --workspace=@reality-observatory/ri-002-multi-sensor"
+    "test": "npm run test --workspace=@reality-observatory/ri-001-reference-watch && npm run test --workspace=@reality-observatory/ri-002-multi-sensor && npm run test --workspace=@reality-observatory/oil-regime-watch"
   },
   "devDependencies": {
     "typescript": "^5.5.0"

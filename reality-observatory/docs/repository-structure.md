@@ -84,7 +84,13 @@ Watch агент чрез две референтни имплементации
   Correlation Engine коректно слива множество Evidence за едно и също
   явление в точно едно Event, с пълен provenance, без Kernel промяна.
 
-И двете служат като постоянни regression тестове за архитектурата. Нов
-Watch агент (напр. „Oil Regime Watch") може да следва тяхната структура
-(манифест, Agent имплементация, companion Correlation Engine за своя
-домейн), без да е нужна промяна в `packages/`.
+И двете служат като постоянни regression тестове за архитектурата, не
+производствени агенти.
+
+**`agents/oil-regime-watch/` (PA-001) е първият производствен Watch
+агент** — наблюдава EIA седмичния petroleum status report, OPEC+
+production announcements, и WTI/Brent спот цени; произвежда реални,
+измерими Predictions с explicit invalidation условия, и резолюира Outcome
+автоматично при изтичане на хоризонта. Построен е върху същата структура
+като референтните имплементации (манифест, Agent имплементация, companion
+Correlation Engine за своя домейн) — без нито една промяна в `packages/`.
