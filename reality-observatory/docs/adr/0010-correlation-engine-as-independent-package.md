@@ -7,6 +7,8 @@
 Разширява: [ADR-0001](0001-architectural-style-and-system-boundaries.md),
 [ADR-0006](0006-hypothesis-and-domain-scoping.md)
 
+Разширена от: [ADR-0011](0011-type-enforced-constitutional-boundaries.md) (CorrelationEventBus — type-enforced publish surface)
+
 ## Контекст
 
 Кой всъщност превръща Evidence в Event? ADR-0002 описва Event като

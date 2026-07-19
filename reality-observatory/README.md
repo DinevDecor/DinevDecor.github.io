@@ -65,14 +65,15 @@ flowchart TB
 | [`docs/adr/0008-…`](docs/adr/0008-domain-trust.md) | Domain Trust |
 | [`docs/adr/0009-…`](docs/adr/0009-prediction-lifecycle.md) | Prediction Lifecycle |
 | [`docs/adr/0010-…`](docs/adr/0010-correlation-engine-as-independent-package.md) | Correlation Engine като независим пакет |
+| [`docs/adr/0011-…`](docs/adr/0011-type-enforced-constitutional-boundaries.md) | Конституционни ограничения, налагани от типовете |
 | [`docs/ontology.md`](docs/ontology.md) | Визуална референция на онтологията |
 | [`docs/repository-structure.md`](docs/repository-structure.md) | Структура на репото и conventions |
 | [`packages/ontology`](packages/ontology) | `@reality-observatory/ontology` — Sensor, Signal, Evidence, Hypothesis, Event, Prediction, Outcome, Trust |
 | [`packages/event-bus`](packages/event-bus) | `@reality-observatory/event-bus` — envelope, topics, publish/subscribe контракт |
 | [`packages/trust-engine`](packages/trust-engine) | `@reality-observatory/trust-engine` — domain-scoped read/write контракт, trust policy |
 | [`packages/sensor-registry`](packages/sensor-registry) | `@reality-observatory/sensor-registry` — регистрация, discovery, lifecycle на Sensor |
-| [`packages/agent-sdk`](packages/agent-sdk) | `@reality-observatory/agent-sdk` — manifest, context, lifecycle контракт |
-| [`packages/correlation-engine`](packages/correlation-engine) | `@reality-observatory/correlation-engine` — domain-exclusive Evidence→Event/Hypothesis контракт |
+| [`packages/agent-sdk`](packages/agent-sdk) | `@reality-observatory/agent-sdk` — manifest, context, lifecycle контракт; `AgentEventBus` не позволява публикуване на Event |
+| [`packages/correlation-engine`](packages/correlation-engine) | `@reality-observatory/correlation-engine` — domain-exclusive Evidence→Event/Hypothesis контракт; `CorrelationEventBus` позволява само Event/Hypothesis |
 | [`agents/`](agents) | Всеки независимо разработван агент; вижте `agents/_example-agent` за скелет |
 
 ## Статус

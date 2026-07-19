@@ -4,6 +4,8 @@
 
 Приета
 
+Разширена от: [ADR-0011](0011-type-enforced-constitutional-boundaries.md) (AgentEventBus — type-enforced publish surface)
+
 ## Контекст
 
 Десетки агенти ще бъдат разработвани независимо — потенциално от различни
