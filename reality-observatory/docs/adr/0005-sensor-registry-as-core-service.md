@@ -51,6 +51,13 @@
 `SensorRegistryWriter`); конкретна имплементация на storage/discovery
 индекс е извън обхвата ѝ.
 
+**Изясняване (при имплементацията на RI-001):** конкретният writer път е
+`AgentContext.ownSensors: SensorRegistryWriter` — runtime-обвързан per-agent
+инстанс, който преди всеки запис проверява, че целевият Sensor реално
+принадлежи на извикващия агент (`ownerAgentId === agentId`), и отхвърля
+опит за запис в противен случай. Тази owner проверка е runtime отговорност,
+не type-level — виж carve-out-а в ADR-0011.
+
 ## Последствия
 
 **Положителни:**

@@ -75,11 +75,22 @@ flowchart TB
 | [`packages/agent-sdk`](packages/agent-sdk) | `@reality-observatory/agent-sdk` — manifest, context, lifecycle контракт; `AgentEventBus` не позволява публикуване на Event |
 | [`packages/correlation-engine`](packages/correlation-engine) | `@reality-observatory/correlation-engine` — domain-exclusive Evidence→Event/Hypothesis контракт; `CorrelationEventBus` позволява само Event/Hypothesis |
 | [`agents/`](agents) | Всеки независимо разработван агент; вижте `agents/_example-agent` за скелет |
+| [`agents/ri-001-reference-watch`](agents/ri-001-reference-watch) | **RI-001** — детерминистична референтна имплементация на Watch агент; постоянен regression test за целия pipeline (ADR-0001…0011) |
 
 ## Статус
 
-Това е архитектурна основа (contracts-only): типовете и интерфейсите тук
-дефинират границите на системата, но нарочно **не съдържат имплементация**.
-Runtime-ът, конкретните реализации на Event Bus/Trust Engine/Sensor
-Registry/Correlation Engine, и самите агенти (започвайки с първия Watch
-агент) се разработват отделно, върху тази основа.
+Ядрото (`packages/*`) е архитектурна основа (contracts-only): типовете и
+интерфейсите дефинират границите на системата, но нарочно **не съдържат
+production имплементация** на Event Bus/Trust Engine/Sensor Registry/
+Correlation Engine.
+
+RI-001 (`agents/ri-001-reference-watch`) е изключение по дизайн: минимални,
+изрично маркирани in-memory fixtures правят целия контракт изпълним и
+тестваем в детерминиран сценарий, доказвайки, че архитектурата поддържа
+пълния цикъл Observation → Evidence → Event → Hypothesis → Prediction →
+Outcome → Trust. Реален runtime и production агенти (започвайки от следващ
+Watch агент) се разработват отделно, върху тази вече доказана основа.
+
+```sh
+npm run test   # изгражда и пуска RI-001's regression suite
+```

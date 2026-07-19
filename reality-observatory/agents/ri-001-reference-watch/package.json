@@ -1,0 +1,23 @@
+{
+  "name": "@reality-observatory/ri-001-reference-watch",
+  "version": "0.1.0",
+  "private": true,
+  "description": "RI-001: reference Watch agent + minimal in-memory fixtures exercising the full kernel pipeline deterministically, as a permanent architecture regression test.",
+  "type": "module",
+  "scripts": {
+    "build": "tsc --build tsconfig.json",
+    "test": "npm run build && node --test dist/test/*.test.js"
+  },
+  "dependencies": {
+    "@reality-observatory/ontology": "*",
+    "@reality-observatory/event-bus": "*",
+    "@reality-observatory/trust-engine": "*",
+    "@reality-observatory/sensor-registry": "*",
+    "@reality-observatory/agent-sdk": "*",
+    "@reality-observatory/correlation-engine": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "@types/node": "^22.0.0"
+  }
+}

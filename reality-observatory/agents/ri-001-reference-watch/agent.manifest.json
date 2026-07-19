@@ -1,0 +1,36 @@
+{
+  "id": "ri-001-reference-watch",
+  "displayName": "RI-001 Reference Watch",
+  "version": "0.1.0",
+  "owner": "platform-team",
+  "description": "Deterministic reference implementation exercising the full kernel pipeline (Sensor Registry -> Signal -> Evidence -> Event -> Hypothesis -> Prediction -> Outcome -> Domain Trust). Not a production Watch agent.",
+  "io": {
+    "consumesTopics": ["event.reference.weather"],
+    "producesTopics": [
+      "signal.reference.weather",
+      "evidence.reference.weather",
+      "hypothesis.reference.weather",
+      "prediction.reference.weather",
+      "outcome.reference.weather"
+    ]
+  },
+  "capabilities": [
+    "sensor:register",
+    "sensor:discover",
+    "sensor:emit-signal",
+    "evidence:publish",
+    "hypothesis:publish",
+    "prediction:publish",
+    "outcome:publish",
+    "trust:read",
+    "storage:read",
+    "storage:write"
+  ],
+  "sandbox": "in-process",
+  "resourceProfile": {
+    "cpuMillicores": 100,
+    "memoryMb": 128,
+    "timeoutMs": 5000
+  },
+  "healthCheckIntervalMs": 30000
+}

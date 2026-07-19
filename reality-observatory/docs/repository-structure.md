@@ -73,6 +73,11 @@ reality-observatory/
 Първата категория агенти, планирана върху тази основа, е „Watch" —
 агенти, които притежават Sensor-и (регистрирани през Sensor Registry),
 публикуват Signal/Evidence и по избор предлагат Hypothesis за даден домейн.
-Архитектурата (ADR-0001…0010) е замислена да е напълно достатъчна за
-разработката на първия Watch агент, без да е нужна допълнителна промяна в
-`packages/`.
+Архитектурата (ADR-0001…0011) е доказано достатъчна за разработката на
+Watch агент: `agents/ri-001-reference-watch/` (RI-001) е работеща,
+детерминистична референтна имплементация, която преминава през целия
+pipeline — Sensor Registry → Signal → Evidence → Event → Hypothesis →
+Prediction → Outcome → Domain Trust Update — и служи като постоянен
+regression test за архитектурата. Нов Watch агент може да следва нейната
+структура (манифест, Agent имплементация, companion Correlation Engine за
+своя домейн), без да е нужна промяна в `packages/`.

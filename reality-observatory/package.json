@@ -9,7 +9,8 @@
   ],
   "scripts": {
     "build": "tsc --build packages/ontology packages/event-bus packages/trust-engine packages/sensor-registry packages/agent-sdk packages/correlation-engine",
-    "typecheck": "tsc --build packages/ontology packages/event-bus packages/trust-engine packages/sensor-registry packages/agent-sdk packages/correlation-engine --force"
+    "typecheck": "tsc --build packages/ontology packages/event-bus packages/trust-engine packages/sensor-registry packages/agent-sdk packages/correlation-engine --force",
+    "test": "npm run test --workspace=@reality-observatory/ri-001-reference-watch"
   },
   "devDependencies": {
     "typescript": "^5.5.0"

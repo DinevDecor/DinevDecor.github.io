@@ -5,6 +5,7 @@
  * Hypothesis/Outcome, docs/adr/0006 and docs/adr/0007.
  */
 export const TopicPrefix = {
+  Sensor: "sensor",
   Signal: "signal",
   Evidence: "evidence",
   Event: "event",
