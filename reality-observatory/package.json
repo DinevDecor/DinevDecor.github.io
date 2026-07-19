@@ -1,0 +1,17 @@
+{
+  "name": "reality-observatory",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reality Observatory — kernel (ontology, event bus, trust engine, agent SDK) and independently developed agents.",
+  "workspaces": [
+    "packages/*",
+    "agents/*"
+  ],
+  "scripts": {
+    "build": "tsc --build packages/ontology packages/event-bus packages/trust-engine packages/agent-sdk",
+    "typecheck": "tsc --build packages/ontology packages/event-bus packages/trust-engine packages/agent-sdk --force"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0"
+  }
+}

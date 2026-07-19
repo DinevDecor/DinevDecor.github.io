@@ -1,0 +1,19 @@
+{
+  "id": "example-agent",
+  "displayName": "Example Agent",
+  "version": "0.1.0",
+  "owner": "platform-team",
+  "description": "Skeleton showing the manifest shape required by AgentManifest. Not a real agent.",
+  "io": {
+    "consumesTopics": ["signal.example.*"],
+    "producesTopics": ["evidence.example"]
+  },
+  "capabilities": ["evidence:publish", "trust:read", "storage:read", "storage:write"],
+  "sandbox": "in-process",
+  "resourceProfile": {
+    "cpuMillicores": 250,
+    "memoryMb": 256,
+    "timeoutMs": 5000
+  },
+  "healthCheckIntervalMs": 30000
+}
