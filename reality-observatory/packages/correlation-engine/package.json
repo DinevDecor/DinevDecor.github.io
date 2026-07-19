@@ -1,8 +1,8 @@
 {
-  "name": "@reality-observatory/agent-sdk",
+  "name": "@reality-observatory/correlation-engine",
   "version": "0.1.0",
   "private": true,
-  "description": "Contract every independently developed agent implements: manifest, context, lifecycle.",
+  "description": "Correlation Engine contract: the domain-exclusive authority turning Evidence into Event/Hypothesis facts.",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

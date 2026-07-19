@@ -4,6 +4,9 @@
 
 Приета
 
+Разширена от: [ADR-0008](0008-domain-trust.md) (Domain Trust),
+[ADR-0010](0010-correlation-engine-as-independent-package.md) (Correlation Engine)
+
 ## Контекст
 
 ADR-0001 фиксира, че всяка комуникация минава през Event Bus, а ADR-0002

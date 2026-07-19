@@ -4,6 +4,9 @@
 
 Приета
 
+Разширена от: [ADR-0006](0006-hypothesis-and-domain-scoping.md) (Hypothesis, Domain),
+[ADR-0007](0007-outcome-and-prediction-resolution.md) (Outcome)
+
 ## Контекст
 
 При десетки независимо разработвани агенти единствената смислена точка на

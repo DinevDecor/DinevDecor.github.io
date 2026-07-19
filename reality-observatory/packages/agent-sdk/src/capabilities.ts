@@ -4,9 +4,12 @@
  */
 export type AgentCapability =
   | "sensor:register"
+  | "sensor:discover"
   | "sensor:emit-signal"
   | "evidence:publish"
+  | "hypothesis:publish"
   | "event:publish"
+  | "outcome:publish"
   | "prediction:publish"
   | "trust:read"
   | "storage:read"

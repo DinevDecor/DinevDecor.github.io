@@ -1,4 +1,4 @@
-import type { AgentId, Confidence, EvidenceId, Provenance, SignalId, Timestamp } from "./common.js";
+import type { AgentId, Confidence, Domain, EvidenceId, Provenance, SignalId, Timestamp } from "./common.js";
 
 export type EvidencePolarity = "supports" | "refutes" | "neutral";
 
@@ -13,6 +13,8 @@ export type EvidenceSource =
  */
 export interface Evidence extends Provenance {
   readonly id: EvidenceId;
+  /** The domain this evidence bears on (docs/adr/0006). */
+  readonly domain: Domain;
   /** The assertion this evidence bears on. */
   readonly claim: string;
   readonly polarity: EvidencePolarity;

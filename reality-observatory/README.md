@@ -10,42 +10,45 @@ Reality Observatory погълва разнородни сигнали за ре
 
 ## Архитектура накратко
 
-- **Ядро** = онтология + Event Bus + Trust Engine + Agent SDK. Стабилно,
-  рядко се променя, не съдържа доменна логика.
+- **Ядро** = онтология + Event Bus + Trust Engine + Sensor Registry +
+  Agent SDK + Correlation Engine. Стабилно, рядко се променя, не съдържа
+  доменна логика.
 - **Агенти** = единственият начин за добавяне на способност. Независимо
-  деплойваеми, комуникират само през Event Bus.
-- **Всичко е immutable факт с provenance** — Signal → Evidence → Event →
-  Prediction, с Trust като изход, изчисляван единствено от Trust Engine.
+  деплойваеми, комуникират само през Event Bus. Correlation Engine
+  инстанции са отделна, domain-exclusive категория — не са агенти.
+- **Всичко е immutable факт с provenance** — Signal → Evidence →
+  (Hypothesis) → Event, Prediction → Outcome, с Trust като domain-scoped
+  изход, изчисляван единствено от Trust Engine.
 
 ```mermaid
 flowchart TB
-    subgraph Agents["Независимо разработвани агенти"]
+    subgraph Agents["Независимо разработвани агенти (напр. Watch)"]
         A1[Sensor-owning agent]
-        A2[Interpreting agent]
         A3[Predicting agent]
     end
 
     subgraph Kernel["Ядро"]
         Bus[[Event Bus]]
         Trust{{Trust Engine}}
-        Ontology[(Ontology:\nSensor · Signal · Evidence\nEvent · Prediction · Trust)]
+        SensorReg{{Sensor Registry}}
+        Corr{{Correlation Engine\nper domain}}
+        Ontology[(Ontology:\nSensor · Signal · Evidence · Hypothesis\nEvent · Prediction · Outcome · Trust)]
     end
 
+    A1 -- register/heartbeat --> SensorReg
     A1 -- Signal --> Bus
-    Bus -- Signal --> A2
-    A2 -- Evidence --> Bus
-    Bus -- Evidence --> A3
+    Bus -- Evidence --> Corr
+    Corr -- Event/Hypothesis --> Bus
     Bus -- Evidence --> Trust
     A3 -- Prediction --> Bus
-    Bus -- resolved Prediction --> Trust
+    Bus -- Outcome --> Trust
     Trust -- Trust updates --> Bus
     Bus -- trust.* --> A1
-    Bus -- trust.* --> A2
     Bus -- trust.* --> A3
 
     Ontology -.->|shared contract| A1
-    Ontology -.->|shared contract| A2
     Ontology -.->|shared contract| A3
+    Ontology -.->|shared contract| Corr
 ```
 
 ## Съдържание
@@ -56,17 +59,26 @@ flowchart TB
 | [`docs/adr/0002-…`](docs/adr/0002-domain-ontology-as-shared-contract.md) | Онтологията като споделен контракт |
 | [`docs/adr/0003-…`](docs/adr/0003-agent-sdk-and-isolation-model.md) | Agent SDK и модел на изолация |
 | [`docs/adr/0004-…`](docs/adr/0004-event-bus-topology-and-trust-engine.md) | Event Bus топология и Trust Engine |
+| [`docs/adr/0005-…`](docs/adr/0005-sensor-registry-as-core-service.md) | Sensor Registry като основна услуга |
+| [`docs/adr/0006-…`](docs/adr/0006-hypothesis-and-domain-scoping.md) | Hypothesis и въвеждане на Domain |
+| [`docs/adr/0007-…`](docs/adr/0007-outcome-and-prediction-resolution.md) | Outcome и резолюция на Prediction |
+| [`docs/adr/0008-…`](docs/adr/0008-domain-trust.md) | Domain Trust |
+| [`docs/adr/0009-…`](docs/adr/0009-prediction-lifecycle.md) | Prediction Lifecycle |
+| [`docs/adr/0010-…`](docs/adr/0010-correlation-engine-as-independent-package.md) | Correlation Engine като независим пакет |
 | [`docs/ontology.md`](docs/ontology.md) | Визуална референция на онтологията |
 | [`docs/repository-structure.md`](docs/repository-structure.md) | Структура на репото и conventions |
-| [`packages/ontology`](packages/ontology) | `@reality-observatory/ontology` — Sensor, Signal, Evidence, Event, Prediction, Trust |
+| [`packages/ontology`](packages/ontology) | `@reality-observatory/ontology` — Sensor, Signal, Evidence, Hypothesis, Event, Prediction, Outcome, Trust |
 | [`packages/event-bus`](packages/event-bus) | `@reality-observatory/event-bus` — envelope, topics, publish/subscribe контракт |
-| [`packages/trust-engine`](packages/trust-engine) | `@reality-observatory/trust-engine` — read/write контракт, trust policy |
+| [`packages/trust-engine`](packages/trust-engine) | `@reality-observatory/trust-engine` — domain-scoped read/write контракт, trust policy |
+| [`packages/sensor-registry`](packages/sensor-registry) | `@reality-observatory/sensor-registry` — регистрация, discovery, lifecycle на Sensor |
 | [`packages/agent-sdk`](packages/agent-sdk) | `@reality-observatory/agent-sdk` — manifest, context, lifecycle контракт |
+| [`packages/correlation-engine`](packages/correlation-engine) | `@reality-observatory/correlation-engine` — domain-exclusive Evidence→Event/Hypothesis контракт |
 | [`agents/`](agents) | Всеки независимо разработван агент; вижте `agents/_example-agent` за скелет |
 
 ## Статус
 
 Това е архитектурна основа (contracts-only): типовете и интерфейсите тук
 дефинират границите на системата, но нарочно **не съдържат имплементация**.
-Runtime-ът, конкретните реализации на Event Bus/Trust Engine, и самите
-агенти се разработват отделно, върху тази основа.
+Runtime-ът, конкретните реализации на Event Bus/Trust Engine/Sensor
+Registry/Correlation Engine, и самите агенти (започвайки с първия Watch
+агент) се разработват отделно, върху тази основа.

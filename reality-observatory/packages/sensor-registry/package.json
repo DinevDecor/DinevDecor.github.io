@@ -1,8 +1,8 @@
 {
-  "name": "@reality-observatory/agent-sdk",
+  "name": "@reality-observatory/sensor-registry",
   "version": "0.1.0",
   "private": true,
-  "description": "Contract every independently developed agent implements: manifest, context, lifecycle.",
+  "description": "Sensor Registry contract: canonical registration, discovery, and lifecycle for Sensor entities.",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -12,9 +12,7 @@
   },
   "dependencies": {
     "@reality-observatory/ontology": "*",
-    "@reality-observatory/event-bus": "*",
-    "@reality-observatory/trust-engine": "*",
-    "@reality-observatory/sensor-registry": "*"
+    "@reality-observatory/event-bus": "*"
   },
   "devDependencies": {
     "typescript": "^5.5.0"
