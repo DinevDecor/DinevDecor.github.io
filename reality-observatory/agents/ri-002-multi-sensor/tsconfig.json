@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "dist",
+    "types": ["node"]
+  },
+  "references": [
+    { "path": "../../packages/ontology" },
+    { "path": "../../packages/event-bus" },
+    { "path": "../../packages/trust-engine" },
+    { "path": "../../packages/sensor-registry" },
+    { "path": "../../packages/agent-sdk" },
+    { "path": "../../packages/correlation-engine" }
+  ],
+  "include": ["src", "test"]
+}

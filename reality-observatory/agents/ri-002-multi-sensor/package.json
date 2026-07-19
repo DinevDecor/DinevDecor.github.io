@@ -1,0 +1,23 @@
+{
+  "name": "@reality-observatory/ri-002-multi-sensor",
+  "version": "0.1.0",
+  "private": true,
+  "description": "RI-002: deterministic multi-sensor correlation reference — validates that the Kernel supports many-Evidence-to-one-Event correlation without Kernel changes.",
+  "type": "module",
+  "scripts": {
+    "build": "tsc --build tsconfig.json",
+    "test": "npm run build && node --test dist/test/*.test.js"
+  },
+  "dependencies": {
+    "@reality-observatory/ontology": "*",
+    "@reality-observatory/event-bus": "*",
+    "@reality-observatory/trust-engine": "*",
+    "@reality-observatory/sensor-registry": "*",
+    "@reality-observatory/agent-sdk": "*",
+    "@reality-observatory/correlation-engine": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "@types/node": "^22.0.0"
+  }
+}

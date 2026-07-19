@@ -74,10 +74,17 @@ reality-observatory/
 агенти, които притежават Sensor-и (регистрирани през Sensor Registry),
 публикуват Signal/Evidence и по избор предлагат Hypothesis за даден домейн.
 Архитектурата (ADR-0001…0011) е доказано достатъчна за разработката на
-Watch агент: `agents/ri-001-reference-watch/` (RI-001) е работеща,
-детерминистична референтна имплементация, която преминава през целия
-pipeline — Sensor Registry → Signal → Evidence → Event → Hypothesis →
-Prediction → Outcome → Domain Trust Update — и служи като постоянен
-regression test за архитектурата. Нов Watch агент може да следва нейната
-структура (манифест, Agent имплементация, companion Correlation Engine за
-своя домейн), без да е нужна промяна в `packages/`.
+Watch агент чрез две референтни имплементации:
+
+- `agents/ri-001-reference-watch/` (RI-001) — единичен Sensor, пълният
+  pipeline Sensor Registry → Signal → Evidence → Event → Hypothesis →
+  Prediction → Outcome → Domain Trust Update, с един Watch агент.
+- `agents/ri-002-multi-sensor/` (RI-002) — три независими Sensor-а/агента
+  (Reuters Feed, EIA Weekly Inventory, Satellite Observation), доказващи че
+  Correlation Engine коректно слива множество Evidence за едно и също
+  явление в точно едно Event, с пълен provenance, без Kernel промяна.
+
+И двете служат като постоянни regression тестове за архитектурата. Нов
+Watch агент (напр. „Oil Regime Watch") може да следва тяхната структура
+(манифест, Agent имплементация, companion Correlation Engine за своя
+домейн), без да е нужна промяна в `packages/`.

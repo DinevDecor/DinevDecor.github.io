@@ -22,10 +22,13 @@ agents/<agent-id>/
 - Trust не се самоприсвоява — Trust Engine е единственият писател на
   `Trust` факти (ADR-0004).
 
-Виж `agents/_example-agent/` за минимален скелет на манифест (без логика) и
+Виж `agents/_example-agent/` за минимален скелет на манифест (без логика),
 `agents/ri-001-reference-watch/` за пълна, работеща референтна имплементация
 (RI-001) — деминистричен сценарий, който преминава през целия pipeline от
-Sensor Registry до Domain Trust Update и служи като постоянен regression
-test за архитектурата (ADR-0001…0011). RI-001 не е производствен агент;
-кодовата база в него (in-memory fixtures за Event Bus/Sensor Registry/Trust
-Engine) съществува единствено за да направи контрактите изпълними в тестове.
+Sensor Registry до Domain Trust Update — и `agents/ri-002-multi-sensor/`
+(RI-002) — доказва, че Correlation Engine коректно слива Evidence от
+няколко независими Sensor-а/агенти в точно едно Event, без нужда от промяна
+в `packages/`. И двете са постоянни regression тестове за архитектурата
+(ADR-0001…0011), не производствени агенти; кодовата база в тях (in-memory
+fixtures за Event Bus/Sensor Registry/Trust Engine) съществува единствено
+за да направи контрактите изпълними в тестове.

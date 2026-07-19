@@ -76,6 +76,7 @@ flowchart TB
 | [`packages/correlation-engine`](packages/correlation-engine) | `@reality-observatory/correlation-engine` — domain-exclusive Evidence→Event/Hypothesis контракт; `CorrelationEventBus` позволява само Event/Hypothesis |
 | [`agents/`](agents) | Всеки независимо разработван агент; вижте `agents/_example-agent` за скелет |
 | [`agents/ri-001-reference-watch`](agents/ri-001-reference-watch) | **RI-001** — детерминистична референтна имплементация на Watch агент; постоянен regression test за целия pipeline (ADR-0001…0011) |
+| [`agents/ri-002-multi-sensor`](agents/ri-002-multi-sensor) | **RI-002** — три независими Sensor-а/агента, доказващи че Correlation Engine слива много Evidence в точно едно Event без Kernel промяна |
 
 ## Статус
 
@@ -84,13 +85,16 @@ flowchart TB
 production имплементация** на Event Bus/Trust Engine/Sensor Registry/
 Correlation Engine.
 
-RI-001 (`agents/ri-001-reference-watch`) е изключение по дизайн: минимални,
-изрично маркирани in-memory fixtures правят целия контракт изпълним и
-тестваем в детерминиран сценарий, доказвайки, че архитектурата поддържа
-пълния цикъл Observation → Evidence → Event → Hypothesis → Prediction →
-Outcome → Trust. Реален runtime и production агенти (започвайки от следващ
-Watch агент) се разработват отделно, върху тази вече доказана основа.
+RI-001 и RI-002 (`agents/ri-001-reference-watch`, `agents/ri-002-multi-sensor`)
+са изключение по дизайн: минимални, изрично маркирани in-memory fixtures
+правят целия контракт изпълним и тестваем в детерминирани сценарии,
+доказвайки, че архитектурата поддържа както единичен-Sensor цикъла
+Observation → Evidence → Event → Hypothesis → Prediction → Outcome →
+Trust (RI-001), така и multi-sensor корелация на много Evidence в едно
+Event със запазен provenance (RI-002) — и двете без нито една промяна в
+`packages/`. Реален runtime и production агенти (започвайки от Oil Regime
+Watch) се разработват отделно, върху тази вече доказана основа.
 
 ```sh
-npm run test   # изгражда и пуска RI-001's regression suite
+npm run test   # изгражда и пуска RI-001's и RI-002's regression suites
 ```

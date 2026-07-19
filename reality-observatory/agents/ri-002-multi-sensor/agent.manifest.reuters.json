@@ -1,0 +1,15 @@
+{
+  "id": "ri-002-reuters-feed",
+  "displayName": "RI-002 Reuters Feed Sensor Agent",
+  "version": "0.1.0",
+  "owner": "platform-team",
+  "description": "Deterministic reference sensor agent for RI-002; publishes newswire-derived Evidence about crude oil inventory. Not a production agent.",
+  "io": {
+    "consumesTopics": [],
+    "producesTopics": ["signal.reference.oil", "evidence.reference.oil"]
+  },
+  "capabilities": ["sensor:register", "sensor:emit-signal", "evidence:publish", "trust:read", "storage:read", "storage:write"],
+  "sandbox": "in-process",
+  "resourceProfile": { "cpuMillicores": 100, "memoryMb": 128, "timeoutMs": 5000 },
+  "healthCheckIntervalMs": 30000
+}
