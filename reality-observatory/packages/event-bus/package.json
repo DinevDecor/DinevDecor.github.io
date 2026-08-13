@@ -1,0 +1,19 @@
+{
+  "name": "@reality-observatory/event-bus",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Event Bus contract: envelope, topic taxonomy, publish/subscribe interface.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@reality-observatory/ontology": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0"
+  }
+}

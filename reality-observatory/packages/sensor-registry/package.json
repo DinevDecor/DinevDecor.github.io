@@ -1,0 +1,20 @@
+{
+  "name": "@reality-observatory/sensor-registry",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sensor Registry contract: canonical registration, discovery, and lifecycle for Sensor entities.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@reality-observatory/ontology": "*",
+    "@reality-observatory/event-bus": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0"
+  }
+}

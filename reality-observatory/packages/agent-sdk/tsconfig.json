@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "references": [
+    { "path": "../ontology" },
+    { "path": "../event-bus" },
+    { "path": "../trust-engine" },
+    { "path": "../sensor-registry" }
+  ],
+  "include": ["src"]
+}

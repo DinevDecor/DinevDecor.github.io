@@ -1,0 +1,22 @@
+{
+  "name": "@reality-observatory/agent-sdk",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Contract every independently developed agent implements: manifest, context, lifecycle.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@reality-observatory/ontology": "*",
+    "@reality-observatory/event-bus": "*",
+    "@reality-observatory/trust-engine": "*",
+    "@reality-observatory/sensor-registry": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0"
+  }
+}

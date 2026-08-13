@@ -1,0 +1,12 @@
+{
+  "_comment": "Operator-curated feed of OPEC+ production announcements. This agent deliberately does not scrape or summarize news with AI (see README) — announcements are structured, dated entries an analyst adds here as they are made public. Copy this file to opec-announcements.json and keep it updated; the agent tracks the last-processed id in its own storage, so appending new entries at the end is always safe.",
+  "announcements": [
+    {
+      "id": "opec-2026-01-15-cut",
+      "announcedAt": "2026-01-15T14:00:00.000Z",
+      "kind": "cut",
+      "magnitudeBarrelsPerDay": 1000000,
+      "summary": "OPEC+ agrees to an additional voluntary production cut starting February."
+    }
+  ]
+}

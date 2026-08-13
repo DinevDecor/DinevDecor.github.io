@@ -1,0 +1,22 @@
+{
+  "name": "@reality-observatory/correlation-engine",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Correlation Engine contract: the domain-exclusive authority turning Evidence into Event/Hypothesis facts.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@reality-observatory/ontology": "*",
+    "@reality-observatory/event-bus": "*",
+    "@reality-observatory/trust-engine": "*",
+    "@reality-observatory/sensor-registry": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0"
+  }
+}

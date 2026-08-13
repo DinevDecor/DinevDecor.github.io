@@ -1,0 +1,20 @@
+{
+  "name": "@reality-observatory/trust-engine",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Trust Engine contract: read/write interfaces and trust policy shape.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@reality-observatory/ontology": "*",
+    "@reality-observatory/event-bus": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0"
+  }
+}

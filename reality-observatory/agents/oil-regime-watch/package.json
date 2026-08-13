@@ -1,0 +1,23 @@
+{
+  "name": "@reality-observatory/oil-regime-watch",
+  "version": "0.1.0",
+  "private": true,
+  "description": "PA-001: Oil Regime Watch — the first production Watch agent for Reality Observatory, covering EIA weekly petroleum inventory, OPEC+ production announcements, and WTI/Brent spot prices.",
+  "type": "module",
+  "scripts": {
+    "build": "tsc --build tsconfig.json",
+    "test": "npm run build && node --test dist/test/*.test.js"
+  },
+  "dependencies": {
+    "@reality-observatory/ontology": "*",
+    "@reality-observatory/event-bus": "*",
+    "@reality-observatory/trust-engine": "*",
+    "@reality-observatory/sensor-registry": "*",
+    "@reality-observatory/agent-sdk": "*",
+    "@reality-observatory/correlation-engine": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "@types/node": "^22.0.0"
+  }
+}

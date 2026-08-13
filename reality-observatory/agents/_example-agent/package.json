@@ -1,0 +1,10 @@
+{
+  "name": "@reality-observatory/agent-example",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Skeleton agent — manifest only, no implementation. Copy this folder to start a new agent.",
+  "dependencies": {
+    "@reality-observatory/agent-sdk": "*",
+    "@reality-observatory/ontology": "*"
+  }
+}

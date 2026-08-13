@@ -1,0 +1,36 @@
+{
+  "id": "oil-regime-watch",
+  "displayName": "Oil Regime Watch",
+  "version": "0.1.0",
+  "owner": "energy-desk",
+  "description": "PA-001 — the first production Watch agent. Observes EIA weekly petroleum inventory, OPEC+ production announcements, and WTI/Brent spot prices; publishes Evidence for the Correlation Engine to turn into Events, reacts to Events with Hypotheses and measurable Predictions, and resolves Outcomes when prediction horizons expire.",
+  "io": {
+    "consumesTopics": ["event.energy.oil"],
+    "producesTopics": [
+      "signal.energy.oil",
+      "evidence.energy.oil",
+      "hypothesis.energy.oil",
+      "prediction.energy.oil",
+      "outcome.energy.oil"
+    ]
+  },
+  "capabilities": [
+    "sensor:register",
+    "sensor:discover",
+    "sensor:emit-signal",
+    "evidence:publish",
+    "hypothesis:publish",
+    "prediction:publish",
+    "outcome:publish",
+    "trust:read",
+    "storage:read",
+    "storage:write"
+  ],
+  "sandbox": "in-process",
+  "resourceProfile": {
+    "cpuMillicores": 200,
+    "memoryMb": 256,
+    "timeoutMs": 15000
+  },
+  "healthCheckIntervalMs": 60000
+}

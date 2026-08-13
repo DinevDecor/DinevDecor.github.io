@@ -1,0 +1,15 @@
+{
+  "id": "ri-002-oil-analyst",
+  "displayName": "RI-002 Oil Analyst Agent",
+  "version": "0.1.0",
+  "owner": "platform-team",
+  "description": "Deterministic reference analyst agent for RI-002; reacts to the correlated oil Event by proposing a Hypothesis, a Prediction, and resolving it with an Outcome. Not a production agent.",
+  "io": {
+    "consumesTopics": ["event.reference.oil"],
+    "producesTopics": ["hypothesis.reference.oil", "prediction.reference.oil", "outcome.reference.oil"]
+  },
+  "capabilities": ["hypothesis:publish", "prediction:publish", "outcome:publish", "trust:read", "storage:read", "storage:write"],
+  "sandbox": "in-process",
+  "resourceProfile": { "cpuMillicores": 100, "memoryMb": 128, "timeoutMs": 5000 },
+  "healthCheckIntervalMs": 30000
+}

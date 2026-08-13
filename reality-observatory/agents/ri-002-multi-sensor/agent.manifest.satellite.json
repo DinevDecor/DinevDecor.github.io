@@ -1,0 +1,15 @@
+{
+  "id": "ri-002-satellite-observation",
+  "displayName": "RI-002 Satellite Observation Sensor Agent",
+  "version": "0.1.0",
+  "owner": "platform-team",
+  "description": "Deterministic reference sensor agent for RI-002; publishes satellite tank-imagery Evidence about crude oil inventory. Not a production agent.",
+  "io": {
+    "consumesTopics": [],
+    "producesTopics": ["signal.reference.oil", "evidence.reference.oil"]
+  },
+  "capabilities": ["sensor:register", "sensor:emit-signal", "evidence:publish", "trust:read", "storage:read", "storage:write"],
+  "sandbox": "in-process",
+  "resourceProfile": { "cpuMillicores": 100, "memoryMb": 128, "timeoutMs": 5000 },
+  "healthCheckIntervalMs": 30000
+}
